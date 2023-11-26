@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block data %}
+<form method="POST" action="/Add_employee">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>Employee Name:</td>
+            <td><input type="text" name="ename" /></td>
+        </tr>
+        <tr>
+            <td>Mobile number:</td>
+            <td><input type="number" name="emno" /></td>
+        </tr>
+        <tr>
+            <td>Emailid:</td>
+            <td><input type="email" name="emailadd" /></td>
+        </tr>
+        
+        <tr>
+            <td><input type="submit" name="send" value="Add Employee" /></td>
+        </tr>
+
+    </table>
+</form>
+
+{% endblock %}

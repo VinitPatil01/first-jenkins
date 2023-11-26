@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block data %}
+
+<h1>Admin dashboard for Employee</h1>
+{{data}}
+<table border="1">
+    <tr>
+        <th>SR.No.</th>
+        <th>Employee name</th>
+        <th>Employee Mobile number</th>
+        <th>Employee Emailid</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {% for d in data %}
+    <tr>
+        <td>{{d.id}}</td>
+        <td>{{d.ename}}</td>
+        <td>{{d.emno}}</td>
+        <td>{{d.email}}</td>
+        <td><a href="/editemployee/{{d.id}}" >Edit</a></td>
+        <td><a href="/deleteemployee/{{d.id}}" >Delete</a></td>
+    </tr>
+
+    {% endfor %}
+</table>
+<br>
+<a href="/employee">Add Employee</a>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block data %}
+<form method="POST" action="/editemployee/{{data.id}}">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>Employee Name:</td>
+            <td><input type="text" name="ename" value={{data.ename}} /></td>
+        </tr>
+        <tr>
+            <td>Mobile number:</td>
+            <td><input type="number" name="emno" value={{data.emno}} /></td>
+        </tr>
+        <tr>
+            <td>Emailid:</td>
+            <td><input type="email" name="emailadd" value={{data.email}} /></td>
+        </tr>
+        <tr>
+            <td><input type="submit" name="send" value="update employee" /></td>
+        </tr>
+
+</form>
+
+{% endblock %}
