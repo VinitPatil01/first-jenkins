@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    stages {
+        stage('Workdir') {
+            sh 'cd employee'
+        }
+
+        stage('Build') {
+            steps {
+                sh 'docker build -t first-image'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                script {
+                   sh 'docker run -dp 8000:8000 first-image'
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline succeeded! You can add additional success steps here.'
+        }
+        failure {
+            echo 'Pipeline failed! You can add additional failure steps here.'
+        }
+    }
+}
