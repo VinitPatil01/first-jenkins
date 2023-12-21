@@ -1,5 +1,10 @@
 pipeline {
     agent any
+        stage('Workdir') {
+            steps {
+                sh 'cd first-jenkins/employee'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'docker build -t first-image'
