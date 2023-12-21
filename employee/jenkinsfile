@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     echo 'Cloning git repository'
-                    sh 'git clone https://github.com/VinitPatil01/first-jenkins/'
+                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-jenkins', url: 'https://github.com/VinitPatil01/first-jenkins']])
                     
                 }
             }
@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script {
                     echo 'Building docker image'
-                    dir('first-jenkins/employee') {
+                    dir('employee') {
                         sh 'docker build -t first-image -f Dockerfile .'
                     }
                 }
